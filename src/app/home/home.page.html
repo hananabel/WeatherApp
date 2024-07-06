@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class = "home">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Home</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  
+  <div *ngIf="weatherData">
+    <p class = "city"> {{ weatherData?.name }}</p>
+    <p class = "temp"> {{ weatherData?.main?.temp }}°C</p>
+    <ion-grid class ="details">
+      <ion-row>
+        <ion-col width-100>
+          <ion-list>
+            <ion-item>
+              <strong>Wind Speed: </strong>{{ weatherData?.wind?.speed }}km
+            </ion-item>
+            <ion-item>
+              <Strong>Humidity:</Strong>{{ weatherData?.main?.humidity }}%
+            </ion-item>
+            <ion-item>
+              <Strong>Pressure:</Strong>{{ weatherData?.main?.pressure }}hPa
+            </ion-item>
+            <ion-item>
+              <Strong>Min temperature:</Strong>{{ weatherData?.main?.temp_min }}°C
+            </ion-item>
+            <ion-item>
+              <Strong>Max temperature:</Strong>{{ weatherData?.main?.temp_max }}°C
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div *ngIf="!weatherData" class = "start">
+    <p> 1. Go to Settings</p>
+    <p> 2. Enter city name</p>
+    <p> 3. Enter Country Code</p>
+    <p> 4. Click on Get Weather</p>
+  </div>
+  
+
